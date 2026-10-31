@@ -1,7 +1,5 @@
 # Lời thuyết trình — NL2Schedule / MANS
 
-Gợi ý thời lượng: 15–20 phút và 3–5 phút demo. Mỗi mục khớp số slide.
-
 ## Slide 1. AI Agent trong lập kế hoạch và lập lịch công việc
 
 Hôm nay em trình bày ứng dụng AI Agent trong pha lập kế hoạch, tập trung vào lập lịch công việc. Nguồn chính là bài NL ⇒ Schedule tại ACL 2026. Bài đề xuất MANS, một quy trình bốn tác tử, cùng bộ dữ liệu và mã nguồn. Em sẽ giải thích cơ chế, phân tích kết quả rồi minh họa bằng một ví dụ nhỏ. Phạm vi là lập lịch, không phải toàn bộ quản lý dự án hay hệ thống phân tích rủi ro.
@@ -86,26 +84,14 @@ Giá trị của bài là bài toán rõ, dữ liệu có chuẩn so sánh và m
 
 Nguồn: Mục 5–6; repository chính thức; PDF trang 9.
 
-## Slide 15. Demo: theo dõi từng bước xử lý
-
-Em bắt đầu demo ở chế độ offline để giải thích cơ chế ổn định. Đây là minh họa do nhóm viết, không giả lập nó thành suy luận LLM. Sau đó có thể thử chèn lỗi thời lượng để Verifier sửa, hoặc chèn xung đột để bộ kiểm tra lịch phát hiện. Chế độ LLM dùng bốn lượt gọi thật khi có cấu hình API. Giao diện và kiểm tra cục bộ là phần nhóm bổ sung.
-
-Nguồn: Demo của nhóm, dựa trên vai trò MANS mục 4.3.1; PDF trang 7.
-
-## Slide 16. Khả năng triển khai từ mã nguồn
-
-Có mã nguồn thực, nhưng không nên nói tải về là chạy trơn tru. Khi đọc source, nhóm thấy dữ liệu Verifier đã sửa chưa được truyền đúng sang Architect. Đây là lỗi tích hợp có thể sửa. Chương trình đánh giá chạy được trên môi trường kiểm tra, nhưng lịch mẫu không khả thi. Demo của nhóm triển khai lại phần giao diện và quy trình nhỏ, phân biệt rõ với source gốc được liên kết trong tài liệu.
-
-Nguồn: Kiểm tra commit 47f62b0 của SCUNLP/NL2Schedule, ngày 31/10/2026; PDF trang 1.
-
-## Slide 17. Ứng dụng vào pha lập kế hoạch dự án
+## Slide 15. Ứng dụng vào pha lập kế hoạch dự án
 
 Để áp dụng vào đề tài, nhóm ưu tiên một quy trình có dữ liệu đủ rõ và quy mô nhỏ. Kết quả cần được kiểm tra trước khi người quản lý quyết định. Phần phân tích tình huống tăng thời lượng là hướng mở rộng của nhóm, không phải đóng góp đã được kiểm chứng trong bài. Cũng không nên đồng nhất các xung đột lịch với toàn bộ rủi ro dự án.
 
 Nguồn: Đề xuất áp dụng của nhóm; giới hạn gốc ở mục 6; PDF trang 9.
 
-## Slide 18. Kết luận theo ba câu hỏi nghiên cứu
+## Slide 16. Kết luận theo ba câu hỏi nghiên cứu
 
-Kết luận thứ nhất là không nên đánh giá agent chỉ bằng văn bản trả lời nghe hợp lý. Thứ hai, kiểm tra đầu ra trung gian và ràng buộc là thiết yếu. Thứ ba, MANS cho thấy phân vai có ích nhưng không bảo đảm lịch luôn khả thi hay tối ưu. Với bài tập lớn, một demo nhỏ có Gantt và bộ kiểm tra rõ ràng giúp thể hiện đúng cơ chế, đồng thời có tiêu chí để đánh giá.
+Kết luận thứ nhất là không nên đánh giá agent chỉ bằng văn bản trả lời nghe hợp lý. Thứ hai, kiểm tra đầu ra trung gian và ràng buộc là thiết yếu. Thứ ba, MANS cho thấy phân vai có ích nhưng không bảo đảm lịch luôn khả thi hay tối ưu. Việc ứng dụng vào lập kế hoạch cần đánh giá tính khả thi, độ lệch makespan và khả năng xử lý dữ liệu thực tế.
 
 Nguồn: Mục 4–6, Bảng 2, 4, 5; PDF trang 8.
