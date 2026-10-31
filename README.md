@@ -5,7 +5,7 @@
 ## Mở nhanh
 
 - Mở `index.html` để chọn **18 slide** hoặc **demo offline**, không cần cài thư viện.
-- Slide: phím ← →, Home/End, F toàn màn hình, N lời thuyết trình; số + Enter để nhảy trang; nút In/PDF để xuất.
+- Slide: phím ← →, Home/End, F toàn màn hình, N lời thuyết trình; số + Enter để nhảy trang; Ctrl+P để in/xuất PDF. Bấm vùng bên phải để tiến, vùng bên trái để lùi. Gõ số trang rồi Enter để nhảy ẩn (không có thanh công cụ).
 - Lời nói từng slide: [docs/thuyet-trinh.md](docs/thuyet-trinh.md).
 - Kịch bản trình diễn: [docs/huong-dan-demo.md](docs/huong-dan-demo.md).
 
@@ -56,3 +56,9 @@ python -m unittest test_pipeline.py
 ```
 
 Demo offline được kiểm tra với lịch 8 phút và phát hiện lịch vi phạm. Pipeline được kiểm tra bằng mock để xác nhận Architect nhận dữ liệu đã sửa của Verifier. Chưa xác nhận kết quả gọi LLM thật khi không có API cấu hình. Kết quả có thể khác theo model. Bộ kiểm tra không chứng minh nội dung đã trích xuất hoàn toàn đúng văn bản, cũng không chứng minh tối ưu ở chế độ LLM.
+
+## Hình minh họa
+
+Hình 1, 2 và 5 được trích từ PDF bài báo và giữ nguyên tỷ lệ, có ghi nguồn tại slide. Các sơ đồ và biểu đồ còn lại được trình bày lại theo dữ liệu đã dẫn nguồn.
+
+Demo cho phép chọn lại bước đã chạy để xem thẻ nhiệm vụ, chuỗi công đoạn, bảng sửa dữ liệu và lịch Gantt; JSON được thu gọn trong phần mở rộng.

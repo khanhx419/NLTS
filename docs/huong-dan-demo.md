@@ -21,3 +21,7 @@ Verifier nhận văn bản gốc và dữ liệu Weaver, Architect nhận đúng
 - **Offline có dùng AI không?** Không. Nó dùng ví dụ và thuật toán nhỏ cho kết quả ổn định. Chế độ LLM mới gọi model thật.
 - **Có bảo đảm tối ưu?** Bộ lập lịch offline duyệt ví dụ rất nhỏ; không thể suy rộng sang mọi bài toán. LLM không bảo đảm tối ưu hay khả thi.
 - **Có phân tích rủi ro không?** Demo kiểm tra vi phạm lịch. Phân tích thời lượng bất định và rủi ro toàn diện nằm ngoài phạm vi nghiên cứu này.
+
+## Giao diện trình diễn
+
+Bốn ô phía trên có thể bấm để xem lại bước đã chạy. Seeker hiện thẻ nhiệm vụ; Weaver hiện công đoạn; Verifier tô vàng trường được sửa; Architect hiện Gantt và kết quả kiểm tra. Bước trước chỉ xem lại kết quả, không gọi API. Nút khôi phục lịch giúp so sánh với tình huống trùng máy.
