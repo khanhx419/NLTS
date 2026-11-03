@@ -114,6 +114,7 @@ class Handler(SimpleHTTPRequestHandler):
         super().do_GET()
 
 if __name__=='__main__':
-    print('Slides: http://127.0.0.1:8765/slides.html')
-    print('Demo:   http://127.0.0.1:8765/demo/')
-    ThreadingHTTPServer(('127.0.0.1',8765),Handler).serve_forever()
+    import sys,runpy
+    real_root=Path(__file__).parent/'real-demo'
+    sys.path.insert(0,str(real_root))
+    runpy.run_path(str(real_root/'app.py'),run_name='__main__')
