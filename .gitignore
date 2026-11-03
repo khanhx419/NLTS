@@ -8,3 +8,8 @@ node_modules/
 *.log
 upstream-source/
 local-results/
+
+real-demo/.state/
+real-demo/.env
+real-demo/.env.*
+!real-demo/.env.example
