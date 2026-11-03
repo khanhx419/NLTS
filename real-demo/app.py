@@ -9,7 +9,6 @@ from pathlib import Path
 from config import ROOT,public_settings
 from llm import Gemini,ModelError
 from pipeline import initial,advance
-from governance import scan,qa
 from store import Store
 
 # Web chỉ nhận thao tác; quyết định bước và PASS/FAIL nằm ở backend.
@@ -39,7 +38,7 @@ def make_server(port=8766,model=None,store=None):
                     state=database.get(sid,self.headers.get('X-Session-Token',''))
                     return self.send(200,{'session':state})
                 except ValueError as error:return self.send(404,{'error':str(error)})
-            paths={'/':'index.html','/hub':'hub.html','/mans':'mans.html','/assets/app.js':'app.js','/assets/style.css':'style.css'}
+            paths={'/':'mans.html','/mans':'mans.html','/assets/app.js':'app.js','/assets/style.css':'style.css'}
             if parsed.path not in paths:return self.send(404,{'error':'Không tìm thấy trang.'})
             file=ROOT/'web'/paths[parsed.path]
             if not file.is_file():return self.send(404,{'error':'Thiếu tài nguyên giao diện.'})
@@ -57,11 +56,6 @@ def make_server(port=8766,model=None,store=None):
                 if self.path=='/api/sessions':
                     state,token=database.create(initial(data.get('kind'),data.get('description'),data.get('initial_code','')))
                     return self.send(201,{'session':state,'session_token':token})
-                if self.path=='/api/gate':
-                    code=data.get('code')
-                    gate=scan(code)
-                    tests=qa(code) if isinstance(code,str) and 0<len(code)<=12000 else {'pass':False,'cases':[],'error':'Mã không hợp lệ.'}
-                    return self.send(200,{'governance':gate,'qa':tests,'accepted':gate['pass'] and tests['pass'],'model_calls':0})
                 if self.path=='/api/next':
                     sid=data.get('id');state=database.get(sid,self.headers.get('X-Session-Token',''))
                     lock=database.lock(sid)
@@ -89,7 +83,6 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--port',type=int,default=8766);args=parser.parse_args()
     try:server=make_server(args.port)
     except OSError:raise SystemExit('Port dang duoc su dung. Thu: python app.py --port 8767')
-    print(f'Hub:  http://127.0.0.1:{args.port}/hub')
     print(f'MANS: http://127.0.0.1:{args.port}/mans')
     print('Gemini key configured:',public_settings()['configured'])
     try:server.serve_forever()

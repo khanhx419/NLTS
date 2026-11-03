@@ -1,28 +1,18 @@
-# Hub-and-Spoke và NL2Schedule — bản chạy thật
+# NL2Schedule / MANS
 
-Hai hệ thống trong [real-demo](real-demo/README.md) đã chuyển sang Gemini API và kiểm tra Python thực. Không có API key thì agent không chạy; lỗi API không được thay bằng dữ liệu mô phỏng.
+Lập lịch đa tác vụ từ mô tả ngôn ngữ tự nhiên. Seeker, Weaver, Verifier, Architect gọi Gemini; Python kiểm tra lịch độc lập.
 
-## Mở nhanh
+## Chạy demo
 
-1. Chạy [cau-hinh-api.cmd](real-demo/cau-hinh-api.cmd) để nhập key từ Google AI Studio trên máy.
-2. Chạy [start.cmd](real-demo/start.cmd) hoặc `python server.py`.
-3. Mở [Hub-and-Spoke](http://127.0.0.1:8766/hub) hoặc [NL2Schedule](http://127.0.0.1:8766/mans).
+Cấu hình key bằng `real-demo/cau-hinh-api.cmd`, sau đó chạy `real-demo/start.cmd` hoặc `python server.py`. Mở http://127.0.0.1:8766/mans.
 
-Đọc [hướng dẫn đầy đủ](real-demo/README.md) về Free Tier, phạm vi kiểm tra, cách trình diễn và kiểm thử. Giao diện chỉ có một nút xử lý chính; cấu hình/lịch sử thu gọn.
+- [Hướng dẫn đầy đủ](real-demo/README.md).
+- [Slide](slides.html).
+- [Lời thuyết trình](docs/thuyet-trinh.md).
+- [Hướng dẫn demo](docs/huong-dan-demo.md).
 
-## Các file cuối
+`final` chứa slide và trang mở demo NL2Schedule; bản mô phỏng cũ nằm trong `offline-backup`, không thay thế kết quả API.
 
-- `final/01_Slide_Hub-and-Spoke.html`: bộ slide Hub-and-Spoke.
-- `final/02_Demo_Hub-and-Spoke.html`: trang mở hệ thống Hub chạy thật.
-- `final/03_Slide_NL2Schedule_MANS.html`: bộ slide NL2Schedule.
-- `final/04_Demo_NL2Schedule_MANS.html`: trang mở hệ thống MANS chạy thật.
+Nguồn: [NL2Schedule, ACL 2026](https://aclanthology.org/2026.acl-long.1648/) · [Mã tác giả](https://github.com/SCUNLP/NL2Schedule).
 
-Ảnh và nội dung slide được giữ nguyên. `slides.html` là lối mở bộ slide NL2Schedule; lời thuyết trình tại `docs/thuyet-trinh.md`. Hai bản mô phỏng trước được giữ trong `offline-backup/` để đối chiếu, không được tự dùng thay cho kết quả API.
-
-## Nguồn nghiên cứu
-
-NL2Schedule / MANS: [Liao và cộng sự, ACL 2026](https://aclanthology.org/2026.acl-long.1648/) · [PDF](https://aclanthology.org/2026.acl-long.1648.pdf) · [Mã tác giả](https://github.com/SCUNLP/NL2Schedule).
-
-Hub-and-Spoke: tài liệu Governing Agentic AI SDLC Project Management Framework của Muhammad Awais (2026). Hệ thống demo là triển khai riêng cho phạm vi hàm kiểm tra email và cổng Governance, không phải mã nguồn tác giả.
-
-Model, phạm vi dữ liệu, bước người dùng xác nhận, QA/AST và vòng sửa được giải thích rõ trong real-demo/README.md. Đã kiểm tra cả hai hệ thống bằng Gemini 3.5 Flash-Lite thật. Hub qua QA/AST và sửa được secret mẫu; MANS tạo lịch hợp lệ 9 phút. Chi tiết tại real-demo/LIVE-VERIFICATION.md.
+Demo không tái lập toàn bộ benchmark. Lịch hợp lệ không đồng nghĩa tối ưu. Key và dữ liệu phiên không đưa lên Git.
